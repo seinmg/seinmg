@@ -1,0 +1,189 @@
+/*.NET seven form submission for record & retrieve
+----- 1:1&1:1.2 exhaust size maybe recalculation require.
+exhaust 30.55mm1.2~1.8L   50.8mm2L   63.5mm2.5L   76.2mm3L   88.9mm3.5L 
+2x50.8mm3.6~3.9L  2x63.5mm4.2~5L  2x76.2mm v8.v10&v12
+petrol supertTurboT 157~189hp/L. superpetrol&superDieselTurbo 135hp/L. superDiesel 104hp/L.(new)
+-----
+1.3L~3.8L 2.5L~6.5L two category gt3 300~490hp gt5 500~690hp 1~1.8Ton class
+maximumReliableRecommended hp/Ton@9000rpm. superfuelParameter 189HP/L.
+granTurismo 500series. heightUnder 1.5m.
+----------Supercar specification factoryTuned@9000revolution per minute benchmark.
+3.8L V6 1.7Ton spTwinTurbo mrr 300hp/Ton@7600rpm. x157/L
+4.2L sp 1.45Ton 305hp/Ton@7600rpm. x125/L
+478hp@7600rpm. 567hp/Ton@9000rpm. x135/L
+4.3L sp 1.5Ton 302hp/Ton@7600rpm x125/L
+490hp@7600rpm
+4.5L sp 1.45Ton 327hp/Ton@7600rpm. x125/L
+607hp@9000rpm.
+4.6L sp 1.7Ton 285hp/Ton@7600rpm. x125/L
+524hp@7600rpm x135/L
+5.0L sp mrr 1.45Ton 363hp/Ton@7600rpm x125/L
+637hp@8500rpm.
+----------
+grandTurismo5 upgrade&TuneRequired@9000rpm
+2.5L spTT 472hp/Ton@9000rpm. 3.0L sptt mrr 567hp/Ton@9000rpm. 3.5L sptt mrr 660hp/Ton@9000rpm. x189
+3.8L V6 1.7Ton 563hp/Ton@8500rpm. 596hp/Ton@9000rpm.
+4.3L sp 580hp@9000rpm. 812hp/Ton@9000rpm sptt mrr 686hp/Ton@7600rpm
+4.6L sp 620hp/Ton@9000rpm. sptt mrr 690hp/Ton@8700rpm.
+5.0L V10 sp mrr 1.35Ton reliable superfuel parameter 570hp/Ton@7600rpm. 675hp/Ton@8000rpm. 670hp/Ton@10000rpm.
+----------
+GT300series. heightUnder 1.5m factoryTuned@9000rpm.
+1.3L R2 I4 to 3.8L V6TTurbo 1.35Ton produce 110~230hp/Ton@6500rpm 180~360hp/T@10000rpm.
+2.0L 2006 270hp weight:1.35~1.49Ton (adv:270hp | wheel:360hp/t). 2.0L spt 380hp/Ton@11000rpm.
+2.0L spt 273@7600rpm. x162
+2.5L sptt mrr 343hp/Ton@8000rpm. 2.5L sp 340hp/Ton@11000rpm. 318hp/Ton@8500rpm.
+3.0L sp 294hp/Ton@8000rpm.
+----- GT3 heightUnder 1.5m upgrade&TuneRequired@9000rpm
+1.3L spt mrr 246hp/Ton@10000rpm. 1.3L spt mrr 270hp/Ton@11000rpm.
+1.4L spt 300hp/Ton@11300rpm. 1.4L spt mrr265hp@10000rpm. spt 290hp/Ton@11000rpm.
+1.5L spt mrr 283hp@10000rpm. spt 280hp/Ton@11000rpm. 1.8L spt mrr 340hp/Ton@11000rpm.
+1.6L spt mrr 300hp/Ton@9900rpm. 2.0L sp 300hp/Ton@11000rpm. 
+3.5L sp 450hp/Ton@9500rpm. 3.7L sp 408hp/Ton@9000rpm. x135.
+3.8L V6 1.7Ton spTT mrr 390hp/Ton@6500rpm. 490hp/Ton@7400rpm. x157
+4.5L sptt mrr 690hp/Ton@9500rpm  850hp/Ton@9000rpm.
+6.3~6.5L 850~1351hp@11000rpm.
+6.3L sptt mrr 506hp/Ton@7600rpm 1.65Ton 1.4m height. 397hp/Ton@7600rpm 2.1Ton 1.95m height
+6.3L sptt mrr 865hp/Ton@8000rpm. 920hp/Ton@8500rpm. 1.65~2.1Ton
+6.5L sptt mrr 893hp/Ton@8000rpm. 950hp/Ton@8500rpm.
+6.3L v8~v12 sptt mrr 690hp/Ton@6400rpm. 6.5L v12 sptt mrr 690hp/Ton@6200rpm.
+----- bike level anywhere from 1~38hp/Ton&39~139hp/Ton
+0.66L when vehicle 417kilogram heavy power weight ratio will be spt mrr 300hp/Ton@11000rpm.
+1.3L superpetrol 300hp/Ton@17000 rpm.spTurbo@12200rpm. 1.4L sp 300hp/Ton@15900rpm.
+1.5L sp 300hp/Ton@14800rpm. 1.6L sp 300hp/Ton@13900rpm. 1.8L sp300hp/Ton@12300rpm.
+----- chassisType hp/L update
+ProPetrol sport RPM scenario idle@1200~1700 Corner&Turn@Low RPM 4000~8500 Max@10000~11000*/
+#include <iostream>
+//#include<windows.h>
+//#include <string>#include <sqlite3.h>
+using namespace std;
+/*SQL connection
+static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
+   int i;for(i = 0; i<argc; i++) {
+       printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");}
+   printf("\n");return 0;};*/
+int main(int argc, char* argv[]) {
+ //Vehicle VIN storage on = first. t = second. th = third ... se = seventh array.  
+int on;
+int t;
+int th;
+int f;
+int fi;
+int s;
+int se;
+int se2;
+on = 36;
+t = 1226;
+th = 52521996;
+f = 36;
+fi = 36;
+s = 36;
+se2 = 1000000;
+char Fi[36];//1st char, assembly loc. A-H=Africa, J-R=Asia, S-Z=Europe, 1-5,7F-70=N.Amer, 6-7E=Oceania, 8-9=S.Amer
+char Se[1226];//2nd&3rd char, will be manufacturer
+char Th[52521996];//4th to 8th char, potrait, vehicle brand, engine size, type
+char Fo[36];//9th char, manufacturer security code
+char Fi[36];//10th char, car model year
+char Si[36];//11th char, assembly plant
+int Sn[1000000];
+//char Sn[2176785555];7.8E+10, current estimate total 2.63244+E17 require segregation. previous estimation based on alphanumeric
+cout << "Printing size\r";
+on -= 1;
+cout << "First set last array will be " << on << "\r";
+t -= 1;
+cout << "Second set last array will be " << t << "\r";
+th -= 1;
+cout << "Third set last array will be " << th << "\r";
+f -= 1;
+cout << "Fourth set last array will be " << f << "\r";
+fi -= 1;
+cout << "Fifth set last array will be " << fi << "\r";
+s -= 1;
+cout << "Sixth set last array will be " << s << "\r";
+//se -= 1;
+se2 -= 1;
+cout << "Seventh estimation. nearly a million and probably " << se2 << " allocation.\r";
+//MessageBox(NULL,)
+//performance calculator. 400m 15s 150kW per ton.
+//1.acceleration power+life support 2.non-acceleration power
+//devCost 130k~2.8mil. 250km/h 6 seater 
+/*from 1 upto 150horse power per liter=diesel.
+extreme dragster race specification diesel vehicle claim around 150 to 460hp/L verification require. 55mm above turbo. reliable circuit and track race spec recommendation maybe above 135hp/L
+1991 V12 SOH 24V 400hp 67hp/L. 1.360833hp/L per vavle
+from 1 to 180 hp/L every petrol vehicle including supercar
+~2009 above upgrade factor 125% 175% x% (reconsider)
+early y2k mint engine multiply indicated stock hp/L value
+air penetration rate 2x1x2m~4.7cubic meter 250~390km/h 1.6~8ton
+external information=vehicle run start or stop information and wheel rotation information */
+/*စူပါ၊ပြိုင်သည့်ကဏ္ဍ ၁၄၀-၁၇၅(၁၈၈)hp/L. ကဏ္ဍစုံ ၂-၄၀hp/L. အိုဟောင်းမော်တော်ယာဉ်၊ဆိုင်ကယ် ၈၃-၁၅၇hp/L@မြင့်ဆုံးကြာရှည်စွမ်းဆောင်နိုင်သည့်လည်ပါတ်နှုံး ၇၅-၁၅၀၀၀rpm. year.၂၀၀၀-၂၀၂၃*/
+//geopolitic reconnaissance upto 390kmh terrain+2700~7021ft altitude drone 3+3 ultrasonic sensor 
+/*SQL connection
+    sqlite3 *db;
+   char *zErrMsg = 0;char *sql;int rc;
+   rc = sqlite3_open("2char.db", &db);//db
+   switch( rc ) {case(1) : fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));//int returning string
+                      default : fprintf(stderr, "Opened database successfully\n");}
+   //sqlite3_close(db);
+                      sql = "select * from twoch;";
+   //Execute SQL statement
+   rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   switch( rc ){case (1) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);//}
+        case (2) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+             case (3) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (4) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (5) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (6) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (7) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (8) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (9) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (10) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (11) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (12) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (13) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (14) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (15) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (16) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (17) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (18) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (19) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (20) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (21) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (22) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (23) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (24) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (25) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (26) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (27) : fprintf(stderr, "SQL error: %s\n", zErrMsg);sqlite3_free(zErrMsg);
+        case (100) : fprintf(stderr, "SQL error: %s\n", zErrMsg); sqlite3_free(zErrMsg);
+        case (101) : fprintf(stderr, "SQL error: %s\n", zErrMsg); sqlite3_free(zErrMsg);
+      default : fprintf(stdout, "Operation done successfully\n");}
+      sqlite3_close(db);*/}
+//SQLITE_ERROR        1   /* Generic error */
+//SQLITE_INTERNAL     2   /* Internal logic error in SQLite */
+//SQLITE_PERM         3   /* Access permission denied */
+//SQLITE_ABORT        4   /* Callback routine requested an abort */
+//SQLITE_BUSY         5   /* The database file is locked */
+//SQLITE_LOCKED       6   /* A table in the database is locked */
+//SQLITE_NOMEM        7   /* A malloc() failed */
+//SQLITE_READONLY     8   /* Attempt to write a readonly database */
+//SQLITE_INTERRUPT    9   /* Operation terminated by sqlite3_interrupt()*/
+//SQLITE_IOERR       10   /* Some kind of disk I/O error occurred */
+//SQLITE_CORRUPT     11   /* The database disk image is malformed */
+//SQLITE_NOTFOUND    12   /* Unknown opcode in sqlite3_file_control() */
+//SQLITE_FULL        13   /* Insertion failed because database is full */
+//SQLITE_CANTOPEN    14   /* Unable to open the database file */
+//SQLITE_PROTOCOL    15   /* Database lock protocol error */
+//SQLITE_EMPTY       16   /* Internal use only */
+//SQLITE_SCHEMA      17   /* The database schema changed */
+//SQLITE_TOOBIG      18   /* String or BLOB exceeds size limit */
+//SQLITE_CONSTRAINT  19   /* Abort due to constraint violation */
+//SQLITE_MISMATCH    20   /* Data type mismatch */
+//SQLITE_MISUSE      21   /* Library used incorrectly */
+//SQLITE_NOLFS       22   /* Uses OS features not supported on host */
+//SQLITE_AUTH        23   /* Authorization denied */
+//SQLITE_FORMAT      24   /* Not used */
+//SQLITE_RANGE       25   /* 2nd parameter to sqlite3_bind out of range */
+//SQLITE_NOTADB      26   /* File opened that is not a database file */
+//SQLITE_NOTICE      27   /* Notifications from sqlite3_log() */
+//SQLITE_WARNING     5  /* Warnings from sqlite3_log() */
+//SQLITE_ROW         100  /* sqlite3_step() has another row ready */
+//SQLITE_DONE        101  /* sqlite3_step() has finished executing */
